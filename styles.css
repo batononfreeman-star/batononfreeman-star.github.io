@@ -47,7 +47,14 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--ink-950);
+  background-color: var(--ink-950);
+  background-image:
+    linear-gradient(180deg, rgba(11, 13, 18, 0.90), rgba(11, 13, 18, 0.94) 45%, rgba(11, 13, 18, 0.98)),
+    url("assets/bg-sections-archive.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-1);
   font-family: var(--font-body);
   font-size: 16px;
@@ -171,7 +178,18 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .btn-ghost:hover { border-color: var(--teal-400); color: var(--teal-400); transform: translateY(-2px); }
 
 /* ============ HERO ============ */
-.hero { position: relative; overflow: hidden; padding: 5rem 0 4rem; }
+.hero, #profil {
+  position: relative;
+  background-color: var(--ink-950);
+  background-image:
+    linear-gradient(180deg, rgba(11, 13, 18, 0.55), rgba(11, 13, 18, 0.85) 65%, rgba(11, 13, 18, 0.97)),
+    url("assets/bg-profil-data.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.hero { overflow: hidden; padding: 5rem 0 4rem; }
 .hero-bg { position: absolute; inset: 0; z-index: -1; }
 .hero-bg::before {
   content: ""; position: absolute; top: -20%; right: -10%; width: 620px; height: 620px;
@@ -246,7 +264,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 /* ============ SECTION SHELL ============ */
 .section { padding: 5.5rem 0; }
-.section-tint { background: var(--ink-900); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.section-tint { background: rgba(18, 21, 28, 0.6); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-head { max-width: 680px; margin: 0 0 3rem; }
 .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
 .section-lead { margin-top: 0.9rem; color: var(--text-2); font-size: 1rem; }
@@ -341,7 +359,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 /* ============ CTA / CONTACT ============ */
 .cta {
-  background: linear-gradient(135deg, var(--ink-900), var(--ink-950));
+  background: linear-gradient(135deg, rgba(18, 21, 28, 0.7), rgba(11, 13, 18, 0.85));
   border-top: 1px solid var(--line);
 }
 .cta-inner { padding: 5rem 0; display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
@@ -362,7 +380,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 @media (max-width: 860px) { .cta-inner { grid-template-columns: 1fr; } }
 
 /* ============ FOOTER ============ */
-.site-footer { background: var(--ink-950); border-top: 1px solid var(--line); padding: 3rem 0 2rem; }
+.site-footer { background: rgba(11, 13, 18, 0.9); border-top: 1px solid var(--line); padding: 3rem 0 2rem; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: flex-start; }
 .footer-brand p { margin-top: 0.8rem; font-size: 0.85rem; color: var(--text-2); max-width: 320px; }
 .footer-links { display: flex; gap: 1.75rem; flex-wrap: wrap; }
@@ -377,4 +395,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Fixed backgrounds are unreliable/heavy on mobile browsers — fall back to scroll */
+@media (max-width: 760px) {
+  body, .hero, #profil { background-attachment: scroll; }
 }
